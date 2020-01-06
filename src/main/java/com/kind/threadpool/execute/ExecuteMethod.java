@@ -7,7 +7,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 演示了线程的创建，execute方法，并
+ * 演示了线程的创建，execute方法
+ * 演示任务的处理
  * @author zhoujifeng
  * @date 2020/1/6 19:22
  */
@@ -24,24 +25,23 @@ public class ExecuteMethod {
 
             for (int i = 0; i < 10; i++) {
                 pool.execute(new SleepTask());
+                System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize()+"，线程数的峰值:"+pool.getLargestPoolSize());
+
             }
-            System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize());
             for (int i = 0; i < 100; i++) {
                 pool.execute(new SleepTask());
+                System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize()+"，线程数的峰值:"+pool.getLargestPoolSize());
+
             }
-            System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize());
             for (int i = 0; i < 10; i++) {
                 pool.execute(new SleepTask());
+                System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize()+"，线程数的峰值:"+pool.getLargestPoolSize());
             }
-            System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize());
-//            for (int i = 0; i < 5; i++) {
-//                pool.execute(new SleepTask());
-//            }
-            System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize());
+
             for (;;){
                 while(pool.getActiveCount() != 0){
                     Thread.sleep(100);
-                    System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize());
+                    System.out.println("运行的线程数:"+pool.getActiveCount()+",队列SIZE:"+queue.size()+",worker数量:"+pool.getPoolSize()+"，线程数的峰值:"+pool.getLargestPoolSize());
                 }
             }
         }catch (Exception e){

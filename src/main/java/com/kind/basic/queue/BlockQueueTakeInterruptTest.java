@@ -34,6 +34,8 @@ public class BlockQueueTakeInterruptTest {
         //等待子线程结束
         thread.join();
 
+        //thread.sleep(1000);
+
 
     }
 }
